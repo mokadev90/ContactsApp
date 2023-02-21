@@ -8,7 +8,6 @@ import {REGISTER} from '../../constants/routeNames';
 
 const LoginComponent = () => {
   const {navigate} = useNavigation();
-  console.log('🚀 ~ file: index.js:12 ~ LoginComponent ~ navigate:', navigate);
 
   return (
     <Container>
