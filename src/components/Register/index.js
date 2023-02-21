@@ -6,7 +6,7 @@ import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {LOGIN, REGISTER} from '../../constants/routeNames';
 
-const RegisterComponent = () => {
+const RegisterComponent = ({onSubmit, onChange, form, errors}) => {
   const {navigate} = useNavigation();
 
   return (
@@ -19,18 +19,50 @@ const RegisterComponent = () => {
         <Text style={styles.title}>Welcome to ContactsApp</Text>
         <Text style={styles.subtitle}>Create a free account</Text>
         <View style={styles.form}>
-          <Input label="Username" placeholder="Enter username" />
-          <Input label="First name" placeholder="Enter first name" />
-          <Input label="Last name" placeholder="Enter last name" />
-          <Input label="Email" placeholder="Enter email" />
+          <Input
+            label="Username"
+            placeholder="Enter username"
+            onChangeText={value => {
+              onChange({name: 'username', value});
+            }}
+            error={errors.username}
+          />
+          <Input
+            label="First name"
+            placeholder="Enter first name"
+            onChangeText={value => {
+              onChange({name: 'firstName', value});
+            }}
+            error={errors.firstName}
+          />
+          <Input
+            label="Last name"
+            placeholder="Enter last name"
+            onChangeText={value => {
+              onChange({name: 'lastName', value});
+            }}
+            error={errors.lastName}
+          />
+          <Input
+            label="Email"
+            placeholder="Enter email"
+            onChangeText={value => {
+              onChange({name: 'email', value});
+            }}
+            error={errors.email}
+          />
           <Input
             label="Password"
             placeholder="Enter password"
             secureTextEntry
             icon={<Text>Show</Text>}
             iconPosition="right"
+            onChangeText={value => {
+              onChange({name: 'password', value});
+            }}
+            error={errors.password}
           />
-          <CustomButton primary title="Submit" />
+          <CustomButton onPress={onSubmit} primary title="Submit" />
           <View style={styles.createSection}>
             <Text style={styles.infoText}>Need a new account?</Text>
             <TouchableOpacity
