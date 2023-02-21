@@ -1,11 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Text, View} from 'react-native';
+import Container from '../../components/common/Container';
+import Input from '../../components/common/Input';
 
 const Login = () => {
+  const [value, setValue] = useState('');
   return (
-    <View>
-      <Text>Hi from Login</Text>
-    </View>
+    <Container>
+      <Input
+        label="Username"
+        onChangeText={text => setValue(text)}
+        value={value}
+        // error={'This field is required'}
+      />
+      <Input
+        label="Password"
+        onChangeText={text => setValue(text)}
+        value={value}
+        icon={<Text>HIDE</Text>}
+        iconPosition="right"
+      />
+    </Container>
   );
 };
 
