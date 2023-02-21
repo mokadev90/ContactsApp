@@ -1,16 +1,13 @@
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {StyleSheet} from 'react-native';
+import GlobalProvider from './src/context/Provider';
 import AppNavContainer from './src/navigations';
 
 const App = () => {
-  return <AppNavContainer></AppNavContainer>;
+  return (
+    <GlobalProvider>
+      <AppNavContainer />
+    </GlobalProvider>
+  );
 };
 
 const styles = StyleSheet.create({});
