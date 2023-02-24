@@ -6,7 +6,15 @@ import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {LOGIN, REGISTER} from '../../constants/routeNames';
 
-const RegisterComponent = ({onSubmit, onChange, form, errors}) => {
+const RegisterComponent = ({
+  onSubmit,
+  onChange,
+  form,
+  loading,
+  error,
+  data,
+  errors,
+}) => {
   const {navigate} = useNavigation();
 
   return (
@@ -19,13 +27,14 @@ const RegisterComponent = ({onSubmit, onChange, form, errors}) => {
         <Text style={styles.title}>Welcome to ContactsApp</Text>
         <Text style={styles.subtitle}>Create a free account</Text>
         <View style={styles.form}>
+          {error?.error && <Text>{error.error}</Text>}
           <Input
             label="Username"
             placeholder="Enter username"
             onChangeText={value => {
               onChange({name: 'username', value});
             }}
-            error={errors.username}
+            error={errors.username || error?.username?.[0]}
           />
           <Input
             label="First name"
@@ -62,7 +71,13 @@ const RegisterComponent = ({onSubmit, onChange, form, errors}) => {
             }}
             error={errors.password}
           />
-          <CustomButton onPress={onSubmit} primary title="Submit" />
+          <CustomButton
+            loading={loading}
+            onPress={onSubmit}
+            disabled={loading}
+            primary
+            title="Submit"
+          />
           <View style={styles.createSection}>
             <Text style={styles.infoText}>Need a new account?</Text>
             <TouchableOpacity

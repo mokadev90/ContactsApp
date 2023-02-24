@@ -1,11 +1,20 @@
-import {useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import RegisterComponent from '../../components/Register';
-import envs from '../../config/env';
+import register from '../../context/actions/auth/register';
+import {GlobalContext} from '../../context/Provider';
+import axiosInstance from '../../helpers/axiosInterceptor';
 
 const Register = () => {
   const [form, setForm] = useState({});
   const [errors, setErrors] = useState({});
-  const {BACKEND_URL} = envs;
+  const {
+    authDispatch,
+    authState: {loading, error, data},
+  } = useContext(GlobalContext);
+
+  useEffect(() => {
+    axiosInstance.post('/auth/login').catch();
+  }, []);
 
   const onChange = ({name, value}) => {
     setForm({...form, [name]: value});
@@ -62,12 +71,22 @@ const Register = () => {
     }
   };
 
+  if (
+    Object.values(form).length === 5 &&
+    Object.values(form).every(item => item.trim().length > 0) &&
+    Object.values(form).every(item => !item)
+  ) {
+    register(form)(authDispatch);
+  }
+
   return (
     <RegisterComponent
       onChange={onChange}
       onSubmit={onSubmit}
       form={form}
       errors={errors}
+      error={error}
+      loading={loading}
     />
   );
 };

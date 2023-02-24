@@ -1,6 +1,6 @@
-export default{
-  isLoggedIn:false,
-  data:{},
-  error:null,
-  loading:false
-}
+export default {
+  isLoggedIn: false,
+  data: {},
+  error: null,
+  loading: false,
+};
