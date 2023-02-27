@@ -24,7 +24,7 @@ const ContactsComponent = ({data, loading, modalVisible, setModalVisible}) => {
   }
 
   const renderItem = ({item}) => {
-    const {firstName, lastName, phoneNumber, contactPicture} = item
+    const {firstName, lastName, phoneNumber, contactPicture, countryCode} = item
 
     return (
       <TouchableOpacity style={styles.itemContainer}>
@@ -41,15 +41,26 @@ const ContactsComponent = ({data, loading, modalVisible, setModalVisible}) => {
                 height: 45,
                 backgroundColor: colors.grey,
                 borderRadius: 100,
-              }}></View>
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Text style={styles.name}>{firstName[0]}</Text>
+              <Text style={styles.name}>{lastName[0]}</Text>
+            </View>
           )}
-          <View style={{flexDirection: 'row', gap: 2}}>
-            <Text>{firstName}</Text>
-            <Text>{lastName}</Text>
+          <View style={{paddingLeft: 20}}>
+            <View style={{flexDirection: 'row', gap: 2}}>
+              <Text style={styles.name}>{firstName}</Text>
+              <Text style={styles.name}>{lastName}</Text>
+            </View>
+            <Text
+              style={
+                styles.phoneNumber
+              }>{`${countryCode} ${phoneNumber}`}</Text>
           </View>
-          <Text>{phoneNumber}</Text>
         </View>
-        <Icon name="right" type="ant" />
+        <Icon name="right" type="ant" size={18} color={colors.grey} />
       </TouchableOpacity>
     )
   }
@@ -77,6 +88,9 @@ const ContactsComponent = ({data, loading, modalVisible, setModalVisible}) => {
           <FlatList
             renderItem={renderItem}
             data={data}
+            ItemSeparatorComponent={
+              <View style={{height: 0.5, backgroundColor: colors.grey}}></View>
+            }
             keyExtractor={item => String(item._id)}
             ListEmptyComponent={ListEmptyComponent}
             ListFooterComponent={<View style={{height: 150}}></View>}
