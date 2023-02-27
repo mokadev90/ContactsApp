@@ -10,7 +10,7 @@
     "noEmit": true,
     "strict": true,
     "target": "esnext",
-    "types":["react-native","react"]
+    "types": ["react-native", "react"]
   },
   "exclude": [
     "node_modules",
