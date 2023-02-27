@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import colors from '../../assets/theme/colors';
+import {StyleSheet} from 'react-native'
+import colors from '../../assets/theme/colors'
 
 export default StyleSheet.create({
   logoImage: {
@@ -34,4 +34,4 @@ export default StyleSheet.create({
   infoText: {
     fontSize: 17,
   },
-});
+})

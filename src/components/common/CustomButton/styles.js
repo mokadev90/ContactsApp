@@ -1,5 +1,5 @@
-import {StyleSheet} from 'react-native';
-import colors from '../../../assets/theme/colors';
+import {StyleSheet} from 'react-native'
+import colors from '../../../assets/theme/colors'
 
 export default StyleSheet.create({
   textInput: {
@@ -29,4 +29,4 @@ export default StyleSheet.create({
   loaderSection: {
     flexDirection: 'row',
   },
-});
+})
