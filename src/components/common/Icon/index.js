@@ -13,8 +13,6 @@ import OcticonsIcon from 'react-native-vector-icons/Octicons'
 import SimpleLineIcon from 'react-native-vector-icons/SimpleLineIcons'
 import ZocialIcon from 'react-native-vector-icons/Zocial'
 
-import {View, Text} from 'react-native'
-
 const getIconFont = type => {
   switch (type) {
     case 'fontisto':
