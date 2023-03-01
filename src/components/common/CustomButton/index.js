@@ -1,7 +1,7 @@
-import {useState} from 'react';
-import {View, Text, TouchableOpacity, ActivityIndicator} from 'react-native';
-import colors from '../../../assets/theme/colors';
-import styles from './styles';
+import {useState} from 'react'
+import {View, Text, TouchableOpacity, ActivityIndicator} from 'react-native'
+import colors from '../../../assets/theme/colors'
+import styles from './styles'
 
 const CustomButton = ({
   style,
@@ -14,24 +14,24 @@ const CustomButton = ({
   error,
   onPress,
 }) => {
-  const [focused, setFocused] = useState(false);
+  const [focused, setFocused] = useState(false)
 
   const getBgColor = () => {
     if (disabled) {
-      return colors.grey;
+      return colors.grey
     }
     if (primary) {
-      return colors.primary;
+      return colors.primary
     }
     if (secondary) {
-      return colors.secondary;
+      return colors.secondary
     }
     if (danger) {
-      return colors.danger;
+      return colors.danger
     } else {
-      return colors.grey;
+      return colors.grey
     }
-  };
+  }
 
   return (
     <TouchableOpacity
@@ -50,12 +50,12 @@ const CustomButton = ({
               color: disabled ? 'black' : colors.white,
               paddingLeft: loading ? 5 : 0,
             }}>
-            {title}
+            {loading ? 'Please wait...' : title}
           </Text>
         )}
       </View>
     </TouchableOpacity>
-  );
-};
+  )
+}
 
-export default CustomButton;
+export default CustomButton
