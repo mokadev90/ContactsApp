@@ -1,4 +1,4 @@
-package com.contactsapp;
+package com.mokadev.contactsapp;
 
 import android.app.Application;
 import com.facebook.react.PackageList;
