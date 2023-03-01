@@ -48,8 +48,8 @@ const ContactsComponent = ({data, loading, modalVisible, setModalVisible}) => {
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
-              <Text style={styles.name}>{firstName[0]}</Text>
-              <Text style={styles.name}>{lastName[0]}</Text>
+              <Text style={styles.name}>{firstName?.[0]}</Text>
+              <Text style={styles.name}>{lastName?.[0]}</Text>
             </View>
           )}
           <View style={{paddingLeft: 20}}>
