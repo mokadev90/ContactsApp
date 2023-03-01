@@ -6,6 +6,7 @@ export default {
   success: '#4cc9f0',
   grey: '#adb5bd',
   darkGrey: '#0d1117',
+  lightGrey: '#706c68',
   white: '#ffffff',
   darkBlue: '#192048',
 }
