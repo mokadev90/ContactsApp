@@ -5,6 +5,7 @@ import CreateContactComponent from '../../components/CreateContactComponent'
 import {CONTACT_LIST} from '../../constants/routeNames'
 import createContact from '../../context/actions/contacts/createContact'
 import {GlobalContext} from '../../context/Provider'
+import uploadImage from '../../helpers/uploadImage'
 
 const CreateContact = () => {
   const {
@@ -15,6 +16,7 @@ const CreateContact = () => {
   } = useContext(GlobalContext)
   const [form, setForm] = useState({})
   const {navigate} = useNavigation()
+  const [uploading, setIsUploading] = useState(false)
   const sheetRef = useRef(null)
   const [localFile, setLocalFile] = useState(null)
 
@@ -35,9 +37,23 @@ const CreateContact = () => {
   }
 
   const onSubmit = () => {
-    createContact(form)(contactsDispatch)(() => {
-      navigate(CONTACT_LIST)
-    })
+    if (localFile?.size) {
+      setIsUploading(true)
+      uploadImage(localFile)(url => {
+        console.log('entré al onSuccess')
+        setIsUploading(false)
+        createContact({...form, contactPicture: url})(contactsDispatch)(() => {
+          navigate(CONTACT_LIST)
+        })
+      })(error => {
+        setIsUploading(false)
+        console.log('error ', error)
+      })
+    } else {
+      createContact(form)(contactsDispatch)(() => {
+        navigate(CONTACT_LIST)
+      })
+    }
   }
 
   const toogleValueChange = () => {
@@ -47,7 +63,6 @@ const CreateContact = () => {
   const onFileSelected = image => {
     closeSheet()
     setLocalFile(image)
-    console.log('image ', image)
   }
 
   return (
@@ -56,7 +71,7 @@ const CreateContact = () => {
       setForm={setForm}
       onSubmit={onSubmit}
       onChangeText={onChangeText}
-      loading={loading}
+      loading={loading || uploading}
       error={error}
       toogleValueChange={toogleValueChange}
       sheetRef={sheetRef}
