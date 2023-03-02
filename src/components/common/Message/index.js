@@ -1,9 +1,22 @@
 import {useState} from 'react'
 import {View, Text, TouchableOpacity, ActivityIndicator} from 'react-native'
 import colors from '../../../assets/theme/colors'
+import CustomText from '../CustomText'
 import styles from './styles'
 
-const Message = ({onDismiss, retry, retryFn, style, success, info, primary, danger, message, error, onPress}) => {
+const Message = ({
+  onDismiss,
+  retry,
+  retryFn,
+  style,
+  success,
+  info,
+  primary,
+  danger,
+  message,
+  error,
+  onPress,
+}) => {
   const [focused, setFocused] = useState(false)
 
   const [userDismissed, setUserDismissed] = useState(false)
@@ -27,22 +40,23 @@ const Message = ({onDismiss, retry, retryFn, style, success, info, primary, dang
   return (
     <>
       {userDismissed ? null : (
-        <TouchableOpacity style={[styles.wrapper, {backgroundColor: getBgColor()}]}>
+        <TouchableOpacity
+          style={[styles.wrapper, {backgroundColor: getBgColor()}]}>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text
+            <CustomText
               style={{
                 color: colors.white,
               }}>
               {message}
-            </Text>
+            </CustomText>
             {retry && !typeof onDismiss === 'function' && (
               <TouchableOpacity onPress={retryFn}>
-                <Text
+                <CustomText
                   style={{
                     color: colors.white,
                   }}>
                   Retry
-                </Text>
+                </CustomText>
               </TouchableOpacity>
             )}
             {typeof onDismiss === 'function' && (
@@ -51,12 +65,12 @@ const Message = ({onDismiss, retry, retryFn, style, success, info, primary, dang
                   setUserDismissed(true)
                   onDismiss()
                 }}>
-                <Text
+                <CustomText
                   style={{
                     color: colors.white,
                   }}>
                   X
-                </Text>
+                </CustomText>
               </TouchableOpacity>
             )}
           </View>

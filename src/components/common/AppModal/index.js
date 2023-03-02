@@ -2,6 +2,7 @@ import {View, Text, Modal, TouchableOpacity, ScrollView} from 'react-native'
 import Icon from '../Icon'
 import styles from './styles'
 import PropTypes from 'prop-types'
+import CustomText from '../CustomText'
 
 const AppModal = ({
   title,
@@ -27,7 +28,9 @@ const AppModal = ({
                 }}>
                 <Icon size={27} name="close" type="evil" />
               </TouchableOpacity>
-              <Text style={styles.title}>{title || 'RNContacts'}</Text>
+              <CustomText style={styles.title}>
+                {title || 'RNContacts'}
+              </CustomText>
               <View />
               <View />
               <View />
@@ -40,9 +43,13 @@ const AppModal = ({
                 <View style={styles.footerSeparator} />
                 <View style={styles.footerItems}>
                   <View style={styles.footer}>
-                    <Text style={styles.footerText}>Privacy Policy</Text>
+                    <CustomText style={styles.footerText}>
+                      Privacy Policy
+                    </CustomText>
                     <View style={styles.termsView} />
-                    <Text style={styles.footerText}>Terms of Service</Text>
+                    <CustomText style={styles.footerText}>
+                      Terms of Service
+                    </CustomText>
                   </View>
                 </View>
               </View>

@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import {View, Text, TouchableOpacity, ActivityIndicator} from 'react-native'
 import colors from '../../../assets/theme/colors'
+import CustomText from '../CustomText'
 import styles from './styles'
 
 const CustomButton = ({
@@ -45,13 +46,13 @@ const CustomButton = ({
           />
         )}
         {title && (
-          <Text
+          <CustomText
             style={{
               color: disabled ? 'black' : colors.white,
               paddingLeft: loading ? 5 : 0,
             }}>
             {loading ? 'Please wait...' : title}
-          </Text>
+          </CustomText>
         )}
       </View>
     </TouchableOpacity>

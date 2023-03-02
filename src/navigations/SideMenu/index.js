@@ -12,6 +12,7 @@ import styles from './styles'
 import {SETTINGS} from '../../constants/routeNames'
 import logout from '../../context/actions/auth/logout'
 import Icon from '../../components/common/Icon'
+import CustomText from '../../components/common/CustomText'
 
 const SideMenu = ({navigation, authDispatch}) => {
   const handleLogout = () => {
@@ -29,14 +30,14 @@ const SideMenu = ({navigation, authDispatch}) => {
 
   const menuItems = [
     {
-      icon: <Icon type="material" size={17} name="settings" />,
+      icon: <Icon type="material" size={17} name="settings" color="black" />,
       name: 'Settings',
       onPress: () => {
         navigation.navigate(SETTINGS)
       },
     },
     {
-      icon: <Icon type="material" size={17} name="logout" />,
+      icon: <Icon type="material" size={17} name="logout" color="black" />,
       name: 'Logout',
       onPress: handleLogout,
     },
@@ -53,7 +54,7 @@ const SideMenu = ({navigation, authDispatch}) => {
           {menuItems.map(({name, icon, onPress}) => (
             <TouchableOpacity onPress={onPress} key={name} style={styles.item}>
               {icon}
-              <Text style={styles.itemText}>{name}</Text>
+              <CustomText style={styles.itemText}>{name}</CustomText>
             </TouchableOpacity>
           ))}
         </View>

@@ -1,7 +1,8 @@
-import {useState} from 'react';
-import {View, Text, TextInput} from 'react-native';
-import colors from '../../../assets/theme/colors';
-import styles from './styles';
+import {useState} from 'react'
+import {View, Text, TextInput} from 'react-native'
+import colors from '../../../assets/theme/colors'
+import CustomText from '../CustomText'
+import styles from './styles'
 
 const Input = ({
   onChangeText,
@@ -13,32 +14,32 @@ const Input = ({
   error,
   ...props
 }) => {
-  const [focused, setFocused] = useState(false);
+  const [focused, setFocused] = useState(false)
 
   const getFlexDirection = () => {
     if (icon && iconPosition) {
       if (iconPosition === 'left') {
-        return 'row';
+        return 'row'
       } else if (iconPosition === 'right') {
-        return 'row-reverse';
+        return 'row-reverse'
       }
     }
-  };
+  }
 
   const getBorderColor = () => {
     if (error) {
-      return colors.danger;
+      return colors.danger
     }
     if (focused) {
-      return colors.primary;
+      return colors.primary
     } else {
-      return colors.grey;
+      return colors.grey
     }
-  };
+  }
 
   return (
     <View style={styles.inputContainer}>
-      {label && <Text>{label}</Text>}
+      {label && <CustomText>{label}</CustomText>}
       <View
         style={[
           styles.wrapper,
@@ -52,15 +53,16 @@ const Input = ({
         <TextInput
           onChangeText={onChangeText}
           value={value}
+          placeholderTextColor={colors.darkGrey}
           style={[styles.textInput, style]}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           {...props}
         />
       </View>
-      {error && <Text style={styles.error}>{error}</Text>}
+      {error && <CustomText style={styles.error}>{error}</CustomText>}
     </View>
-  );
-};
+  )
+}
 
-export default Input;
+export default Input

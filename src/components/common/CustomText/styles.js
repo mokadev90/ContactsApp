@@ -2,16 +2,14 @@ import {StyleSheet} from 'react-native'
 import colors from '../../../assets/theme/colors'
 
 export default StyleSheet.create({
-  textInput: {
-    flex: 1,
-    width: '100%',
-  },
   wrapper: {
     height: 42,
-    borderWidth: 1,
-    borderRadius: 4,
     paddingHorizontal: 5,
-    marginTop: 5,
+    paddingVertical: 13,
+    marginVertical: 5,
+    borderRadius: 4,
+    // alignItems: 'center',
+    // justifyContent: 'space-evenly',
   },
   inputContainer: {
     paddingVertical: 12,
@@ -20,5 +18,8 @@ export default StyleSheet.create({
     color: colors.danger,
     marginTop: 4,
     fontSize: 12,
+  },
+  loaderSection: {
+    flexDirection: 'row',
   },
 })

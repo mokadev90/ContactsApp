@@ -4,7 +4,6 @@ import colors from '../../assets/theme/colors'
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.darkGrey,
   },
   imageView: {
     width: 150,

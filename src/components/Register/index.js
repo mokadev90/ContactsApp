@@ -7,6 +7,7 @@ import {useNavigation} from '@react-navigation/native'
 import {LOGIN, REGISTER} from '../../constants/routeNames'
 import Message from '../common/Message'
 import {useState} from 'react'
+import CustomText from '../common/CustomText'
 
 const RegisterComponent = ({
   onSubmit,
@@ -27,8 +28,8 @@ const RegisterComponent = ({
         source={require('../../assets/images/logo.png')}
       />
       <View>
-        <Text style={styles.title}>Welcome to ContactsApp</Text>
-        <Text style={styles.subtitle}>Create a free account</Text>
+        <CustomText style={styles.title}>Welcome to ContactsApp</CustomText>
+        <CustomText style={styles.subtitle}>Create a free account</CustomText>
         <View style={styles.form}>
           {error?.error && (
             <Message
@@ -78,7 +79,7 @@ const RegisterComponent = ({
             secureTextEntry={isSecureEntry}
             icon={
               <TouchableOpacity onPress={() => setIsSecureEntry(prev => !prev)}>
-                <Text>{isSecureEntry ? 'Show' : 'Hide'}</Text>
+                <CustomText>{isSecureEntry ? 'Show' : 'Hide'}</CustomText>
               </TouchableOpacity>
             }
             iconPosition="right"
@@ -95,12 +96,12 @@ const RegisterComponent = ({
             title="Submit"
           />
           <View style={styles.createSection}>
-            <Text style={styles.infoText}>Need a new account?</Text>
+            <CustomText style={styles.infoText}>Need a new account?</CustomText>
             <TouchableOpacity
               onPress={() => {
                 navigate(LOGIN)
               }}>
-              <Text style={styles.linkBtn}>Login</Text>
+              <CustomText style={styles.linkBtn}>Login</CustomText>
             </TouchableOpacity>
           </View>
         </View>

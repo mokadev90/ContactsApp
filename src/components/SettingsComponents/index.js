@@ -4,6 +4,7 @@ import Container from '../common/Container'
 import colors from '../../assets/theme/colors'
 import AppModal from '../common/AppModal'
 import Icon from '../common/Icon'
+import CustomText from '../common/CustomText'
 
 const SettingsComponents = ({
   modalVisible,
@@ -28,10 +29,13 @@ const SettingsComponents = ({
                     alignItems: 'center',
                     paddingVertical: 5,
                   }}>
-                  {selected && <Icon name="check" size={17} />}
-                  <Text style={{fontSize: 17, paddingLeft: selected ? 15 : 30}}>
+                  {selected && (
+                    <Icon name="check" size={17} color={colors.lightGrey} />
+                  )}
+                  <CustomText
+                    style={{fontSize: 17, paddingLeft: selected ? 15 : 30}}>
                     {name}
-                  </Text>
+                  </CustomText>
                 </TouchableOpacity>
               </View>
             ))}
@@ -40,7 +44,7 @@ const SettingsComponents = ({
         title="Sort by"
         setModalVisible={setModalVisible}
       />
-      <ScrollView style={{backgroundColor: colors.darkGrey}}>
+      <ScrollView style={{}}>
         {settingsOptions.map(({title, subtitle, onPress}, index) => (
           <TouchableOpacity key={title} onPress={onPress}>
             <View
@@ -49,11 +53,11 @@ const SettingsComponents = ({
                 paddingBottom: 20,
                 paddingTop: 20,
               }}>
-              <Text style={{fontSize: 17}}>{title}</Text>
+              <CustomText style={{fontSize: 17}}>{title}</CustomText>
               {subtitle && (
-                <Text style={{fontSize: 14, opacity: 0.6, paddingTop: 5}}>
+                <CustomText style={{fontSize: 14, opacity: 0.6, paddingTop: 5}}>
                   {subtitle}
-                </Text>
+                </CustomText>
               )}
             </View>
             <View style={{height: 0.5, backgroundColor: colors.grey}} />

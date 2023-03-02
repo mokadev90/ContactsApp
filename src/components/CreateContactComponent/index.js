@@ -8,6 +8,7 @@ import CountryPicker, {DARK_THEME} from 'react-native-country-picker-modal'
 import {DEFAULT_IMAGE_URI} from '../../constants/general'
 import colors from '../../assets/theme/colors'
 import ImagePicker from '../common/ImagePicker'
+import CustomText from '../common/CustomText'
 
 const CreateContactComponent = ({
   loading,
@@ -31,7 +32,7 @@ const CreateContactComponent = ({
           style={styles.imageView}
         />
         <TouchableOpacity onPress={openSheet}>
-          <Text style={styles.chooseText}>Choose image</Text>
+          <CustomText style={styles.chooseText}>Choose image</CustomText>
         </TouchableOpacity>
         <Input
           label="First name"
@@ -48,7 +49,6 @@ const CreateContactComponent = ({
         <Input
           icon={
             <CountryPicker
-              theme={DARK_THEME}
               withFilter
               withFlag
               countryCode={form.countryCode || undefined}
@@ -76,7 +76,7 @@ const CreateContactComponent = ({
             paddingVertical: 10,
             alignItems: 'center',
           }}>
-          <Text style={{fontSize: 17}}>Add to favorites</Text>
+          <CustomText style={{fontSize: 17}}>Add to favorites</CustomText>
           <Switch
             trackColor={{false: '#767577', true: colors.primary}}
             thumbColor="#ffffff"

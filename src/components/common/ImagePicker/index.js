@@ -5,9 +5,9 @@ import RBSheet from 'react-native-raw-bottom-sheet'
 import Icon from '../Icon'
 import colors from '../../../assets/theme/colors'
 import ImagePickerCropper from 'react-native-image-crop-picker'
+import CustomText from '../CustomText'
 
 const ImagePicker = forwardRef(({onFileSelected}, ref) => {
-  console.log('🚀 ~ file: index.js:8 ~ ImagePicker ~ ref:', ref)
   const options = [
     {
       name: 'Take from camera',
@@ -72,7 +72,7 @@ const ImagePicker = forwardRef(({onFileSelected}, ref) => {
             style={styles.pickerOptions}
             key={name}>
             {icon}
-            <Text style={styles.text}>{name}</Text>
+            <CustomText style={styles.text}>{name}</CustomText>
           </TouchableOpacity>
         ))}
       </View>

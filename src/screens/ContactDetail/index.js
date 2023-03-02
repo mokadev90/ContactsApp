@@ -1,12 +1,13 @@
-import React from 'react';
-import {Text, View} from 'react-native';
+import React from 'react'
+import {Text, View} from 'react-native'
+import CustomText from '../../components/common/CustomText'
 
 const ContactDetail = () => {
   return (
     <View>
-      <Text>Hi from Contact Detail</Text>
+      <CustomText>Hi from Contact Detail</CustomText>
     </View>
-  );
-};
+  )
+}
 
-export default ContactDetail;
+export default ContactDetail
