@@ -5,7 +5,7 @@ import {
   CREATE_CONTACTS_SUCCESS,
 } from '../../../constants/actionTypes'
 
-import axiosInstance from '../../../helpers/axiosInterceptor'
+import axiosInstance from '../../../helpers/axiosInstance'
 
 export default form => dispatch => onSuccess => {
   const requestPayload = {

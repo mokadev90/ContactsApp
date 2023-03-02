@@ -4,7 +4,7 @@ import RegisterComponent from '../../components/Register'
 import {LOGIN} from '../../constants/routeNames'
 import register, {clearAuthState} from '../../context/actions/auth/register'
 import {GlobalContext} from '../../context/Provider'
-import axiosInstance from '../../helpers/axiosInterceptor'
+import axiosInstance from '../../helpers/axiosInstance'
 
 const Register = () => {
   const [form, setForm] = useState({})

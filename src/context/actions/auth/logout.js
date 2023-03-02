@@ -5,7 +5,7 @@ import {
   LOGIN_SUCCESS,
   LOGOUT,
 } from '../../../constants/actionTypes'
-import axiosInstance from '../../../helpers/axiosInterceptor'
+import axiosInstance from '../../../helpers/axiosInstance'
 
 export default () => dispatch => {
   AsyncStorage.removeItem('token')
