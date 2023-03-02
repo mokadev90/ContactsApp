@@ -8,7 +8,7 @@ const Settings = () => {
   const [modalVisible, setModalVisible] = useState(false)
   const [sortBy, setSortBy] = useState(null)
 
-  const saveSetting = ({key, value}) => {
+  const saveSetting = (key, value) => {
     AsyncStorage.setItem(key, value)
   }
 

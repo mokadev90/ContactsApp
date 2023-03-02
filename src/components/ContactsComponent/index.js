@@ -15,8 +15,15 @@ import Icon from '../common/Icon'
 import styles from './styles'
 import {CREATE_CONTACT} from '../../constants/routeNames'
 import {useNavigation} from '@react-navigation/native'
+import CustomText from '../common/CustomText'
 
-const ContactsComponent = ({data, loading, modalVisible, setModalVisible}) => {
+const ContactsComponent = ({
+  sortBy,
+  data,
+  loading,
+  modalVisible,
+  setModalVisible,
+}) => {
   const {navigate} = useNavigation()
   const ListEmptyComponent = () => {
     return (
@@ -48,19 +55,19 @@ const ContactsComponent = ({data, loading, modalVisible, setModalVisible}) => {
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
-              <Text style={styles.name}>{firstName?.[0]}</Text>
-              <Text style={styles.name}>{lastName?.[0]}</Text>
+              <CustomText style={styles.name}>{firstName?.[0]}</CustomText>
+              <CustomText style={styles.name}>{lastName?.[0]}</CustomText>
             </View>
           )}
           <View style={{paddingLeft: 20}}>
             <View style={{flexDirection: 'row', gap: 2}}>
-              <Text style={styles.name}>{firstName}</Text>
-              <Text style={styles.name}>{lastName}</Text>
+              <CustomText style={styles.name}>{firstName}</CustomText>
+              <CustomText style={styles.name}>{lastName}</CustomText>
             </View>
-            <Text
+            <CustomText
               style={
                 styles.phoneNumber
-              }>{`${countryCode} ${phoneNumber}`}</Text>
+              }>{`${countryCode} ${phoneNumber}`}</CustomText>
           </View>
         </View>
         <Icon name="right" type="ant" size={18} color={colors.grey} />
@@ -70,18 +77,18 @@ const ContactsComponent = ({data, loading, modalVisible, setModalVisible}) => {
 
   return (
     <>
-      <View style={{backgroundColor: colors.darkGrey, flexGrow: 1}}>
-        <AppModal
+      <View style={{flexGrow: 1}}>
+        {/* <AppModal
           title="My Profile"
           modalBody={
             <View>
-              <Text>Hello from the modal</Text>
+              <CustomText>Hello from the modal</CustomText>
             </View>
           }
           modalFooter={<></>}
           setModalVisible={setModalVisible}
           modalVisible={modalVisible}
-        />
+        /> */}
         {loading && (
           <View style={{paddingVertical: 100, paddingHorizontal: 100}}>
             <ActivityIndicator color={colors.primary} size="large" />
@@ -91,7 +98,26 @@ const ContactsComponent = ({data, loading, modalVisible, setModalVisible}) => {
           <View style={[{paddingVertical: 20}]}>
             <FlatList
               renderItem={renderItem}
-              data={data}
+              data={
+                sortBy
+                  ? data.sort((a, b) => {
+                      if (sortBy === 'First Name') {
+                        if (b.firstName > a.firstName) {
+                          return -1
+                        } else {
+                          return 1
+                        }
+                      }
+                      if (sortBy === 'Last Name') {
+                        if (b.lastName > a.lastName) {
+                          return -1
+                        } else {
+                          return 1
+                        }
+                      }
+                    })
+                  : data
+              }
               ItemSeparatorComponent={
                 <View
                   style={{height: 0.5, backgroundColor: colors.grey}}></View>
