@@ -13,7 +13,7 @@ import Message from '../common/Message'
 import colors from '../../assets/theme/colors'
 import Icon from '../common/Icon'
 import styles from './styles'
-import {CREATE_CONTACT} from '../../constants/routeNames'
+import {CONTACT_DETAILS, CREATE_CONTACT} from '../../constants/routeNames'
 import {useNavigation} from '@react-navigation/native'
 import CustomText from '../common/CustomText'
 
@@ -37,7 +37,9 @@ const ContactsComponent = ({
     const {firstName, lastName, phoneNumber, contactPicture, countryCode} = item
 
     return (
-      <TouchableOpacity style={styles.itemContainer}>
+      <TouchableOpacity
+        style={styles.itemContainer}
+        onPress={() => navigate(CONTACT_DETAILS, {item})}>
         <View style={styles.item}>
           {contactPicture ? (
             <Image
