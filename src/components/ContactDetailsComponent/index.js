@@ -7,10 +7,17 @@ import {useNavigation} from '@react-navigation/native'
 import colors from '../../assets/theme/colors'
 import {DEFAULT_IMAGE_URI} from '../../constants/general'
 import CustomButton from '../common/CustomButton'
+import {CREATE_CONTACT} from '../../constants/routeNames'
 
 const ContactDetailsComponent = ({contact}) => {
-  const {firstName, lastName, phoneNumber, contactPicture, countryCode} =
-    contact
+  const {
+    firstName,
+    lastName,
+    phoneNumber,
+    phoneCode,
+    contactPicture,
+    countryCode,
+  } = contact
 
   const {navigate} = useNavigation()
 
@@ -75,7 +82,9 @@ const ContactDetailsComponent = ({contact}) => {
             size={27}
           />
           <View style={styles.phoneMobile}>
-            <CustomText>{phoneNumber}</CustomText>
+            <CustomText>
+              {phoneCode} {phoneNumber}
+            </CustomText>
             <CustomText>Mobile</CustomText>
           </View>
 

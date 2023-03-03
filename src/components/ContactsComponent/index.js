@@ -34,7 +34,7 @@ const ContactsComponent = ({
   }
 
   const renderItem = ({item}) => {
-    const {firstName, lastName, phoneNumber, contactPicture, countryCode} = item
+    const {firstName, lastName, phoneNumber, contactPicture, phoneCode} = item
 
     return (
       <TouchableOpacity
@@ -69,7 +69,7 @@ const ContactsComponent = ({
             <CustomText
               style={
                 styles.phoneNumber
-              }>{`${countryCode} ${phoneNumber}`}</CustomText>
+              }>{`${phoneCode} ${phoneNumber}`}</CustomText>
           </View>
         </View>
         <Icon name="right" type="ant" size={18} color={colors.grey} />

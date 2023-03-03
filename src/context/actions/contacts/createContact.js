@@ -8,8 +8,10 @@ import {
 import axiosInstance from '../../../helpers/axiosInstance'
 
 export default form => dispatch => onSuccess => {
+  console.log('form.phoneCode ', form.phoneCode)
   const requestPayload = {
-    countryCode: form.phoneCode || '',
+    countryCode: form.countryCode || '',
+    phoneCode: form.phoneCode || '',
     firstName: form.firstName || '',
     lastName: form.lastName || '',
     phoneNumber: form.phoneNumber || '',

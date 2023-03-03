@@ -28,7 +28,7 @@ const CreateContactComponent = ({
     <View style={styles.container}>
       <Container>
         <Image
-          source={{uri: localFile?.path || DEFAULT_IMAGE_URI}}
+          source={{uri: localFile?.path || localFile || DEFAULT_IMAGE_URI}}
           style={styles.imageView}
         />
         <TouchableOpacity onPress={openSheet}>
@@ -39,12 +39,14 @@ const CreateContactComponent = ({
           onChangeText={value => onChangeText({name: 'firstName', value})}
           placeholder="Enter your First name"
           error={error?.firstName}
+          value={form?.firstName || ''}
         />
         <Input
           label="Last name"
           onChangeText={value => onChangeText({name: 'lastName', value})}
           placeholder="Enter your Last name"
           error={error?.lastName}
+          value={form?.lastName || ''}
         />
         <Input
           icon={
@@ -52,6 +54,7 @@ const CreateContactComponent = ({
               withFilter
               withFlag
               countryCode={form.countryCode || undefined}
+              phoneCode={form.phoneCode || undefined}
               withCallingCode
               withCallingCodeButton
               withEmoji
@@ -68,6 +71,7 @@ const CreateContactComponent = ({
           onChangeText={value => onChangeText({name: 'phoneNumber', value})}
           placeholder="Enter your Phone number"
           error={error?.phoneNumber}
+          value={form?.phoneNumber || ''}
         />
         <View
           style={{
