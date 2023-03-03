@@ -6,8 +6,8 @@ import {navigate} from '../navigations/SideMenu/RootNavigator'
 // import {DEV_BACKEND_URL, PROD_BACKEND_URL} from '@env'
 
 // BACKEND_URL = 'http://192.168.100.70:3000' // VIEJA
-BACKEND_URL = 'http://192.168.100.26:3000' // CASA
-// BACKEND_URL='http://172.16.10.122:3000' // TRABAJO
+// BACKEND_URL = 'http://192.168.100.26:3000' // CASA
+BACKEND_URL = 'http://172.16.10.122:3000' // TRABAJO
 
 let headers = {}
 
@@ -24,7 +24,6 @@ axiosInstance.interceptors.request.use(
     if (token) {
       config.headers.Authorization = `Bearer ${token}`
     }
-    console.log(token)
     return config
   },
   error => {
