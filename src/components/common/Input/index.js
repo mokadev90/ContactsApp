@@ -57,6 +57,7 @@ const Input = ({
           style={[styles.textInput, style]}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
+          color={colors.darkGrey}
           {...props}
         />
       </View>
